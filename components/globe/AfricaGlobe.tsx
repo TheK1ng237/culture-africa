@@ -223,7 +223,7 @@ export default function AfricaGlobe({ markers, selectedSlug, onSelect, onUnavail
     function resize() {
       const w = container!.clientWidth || 1;
       const h = container!.clientHeight || 1;
-      renderer.setSize(w, h, false);
+      renderer?.setSize(w, h, false);
       camera.aspect = w / h;
       camera.updateProjectionMatrix();
     }
@@ -329,13 +329,13 @@ export default function AfricaGlobe({ markers, selectedSlug, onSelect, onUnavail
         mesh.scale.setScalar(target);
         (mesh.material as THREE.MeshBasicMaterial).color.setHex(isSelected ? 0xe8503a : 0xc9a24d);
       });
-      renderer.render(scene, camera);
+      renderer?.render(scene, camera);
     }
 
     function setRunning(next: boolean) {
       if (next === running) return;
       running = next;
-      renderer.setAnimationLoop(next ? tick : null);
+      renderer?.setAnimationLoop(next ? tick : null);
     }
 
     const intersection = new IntersectionObserver(
