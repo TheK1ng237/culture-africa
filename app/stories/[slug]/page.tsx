@@ -44,7 +44,7 @@ export default async function StoryPage({ params }: { params: Params }) {
         <div className="mx-auto max-w-4xl px-5 pb-16 pt-40 sm:px-8 md:pb-24 md:pt-52">
           <p className="text-or">{story.category}, {story.readingTime} min de lecture</p>
           <h1 className="mt-4 font-display text-5xl leading-[1.05] text-balance md:text-7xl">{story.title}</h1>
-          <p className="mt-8 max-w-2xl font-display text-xl leading-relaxed text-beige/95 md:text-2xl">{story.intro}</p>
+          <p className="mt-8 max-w-2xl font-sans text-xl leading-relaxed text-beige/95 md:text-2xl">{story.intro}</p>
         </div>
       </header>
 

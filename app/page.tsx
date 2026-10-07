@@ -38,10 +38,10 @@ export default function HomePage() {
             </h2>
           </Reveal>
           <Reveal delay={0.15}>
-            <p className="font-display text-2xl sm:text-4xl md:text-5xl leading-snug text-balance text-beige/95 font-medium">
+            <p className="font-sans text-2xl sm:text-4xl md:text-5xl leading-snug text-balance text-beige/95 font-medium">
               Le continent compte plus de cinquante pays et plus de deux mille langues. Ici, on ne résume pas : <span className="text-gold-gradient font-bold">on explore, on écoute, on goûte, on lit.</span>
             </p>
-          </Reveal>
+          </Reveal> 
         </div>
       </section>
 
