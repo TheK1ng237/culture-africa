@@ -1,23 +1,29 @@
 @import "tailwindcss";
 
 @theme {
-  --color-noir: #110d0a;
-  --color-noir-2: #1c150f;
-  --color-ivoire: #f6f0e4;
-  --color-beige: #ebdfc8;
-  --color-sable: #d9c29a;
-  --color-terre: #b2532b;
-  --color-ocre: #c88a2e;
-  --color-rouge: #8a2f1f;
-  --color-vert: #1d4a38;
-  --color-or: #c9a24d;
+  --color-noir: #090705;
+  --color-noir-card: #140f0a;
+  --color-noir-surface: #1d1610;
+  --color-ivoire: #faf6ee;
+  --color-beige: #ebdcc4;
+  --color-sable: #d6b889;
+  --color-terre: #c85a32;
+  --color-ocre: #d98e2b;
+  --color-rouge: #9e3624;
+  --color-vert: #1c523e;
+  --color-or: #e5be58;
+  --color-or-light: #f7d988;
+  --color-or-glow: rgba(229, 190, 88, 0.25);
 
-  --font-display: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
-  --font-sans: "Avenir Next", "Segoe UI", "Helvetica Neue", Helvetica, Arial, system-ui, sans-serif;
+  --font-display: var(--font-burowai), "Cinzel", "Playfair Display", Georgia, serif;
+  --font-sans: var(--font-skranji), "Plus Jakarta Sans", system-ui, sans-serif;
+  --font-burowai: var(--font-burowai), serif;
+  --font-skranji: var(--font-skranji), sans-serif;
 }
 
 html {
   background: var(--color-noir);
+  color-scheme: dark;
   -webkit-text-size-adjust: 100%;
 }
 
@@ -28,44 +34,119 @@ html {
 }
 
 body {
-  background: var(--color-ivoire);
-  color: var(--color-noir);
+  background: var(--color-noir);
+  color: var(--color-ivoire);
   font-family: var(--font-sans);
-  line-height: 1.6;
+  line-height: 1.65;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #090705;
+}
+::-webkit-scrollbar-thumb {
+  background: #2b2015;
+  border-radius: 5px;
+  border: 2px solid #090705;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #c88a2e;
 }
 
 :focus-visible {
   outline: 2px solid var(--color-or);
   outline-offset: 3px;
-  border-radius: 2px;
+  border-radius: 4px;
 }
 
 ::selection {
-  background: var(--color-ocre);
+  background: var(--color-or);
   color: var(--color-noir);
+}
+
+/* Glassmorphism & Luxury Card Utilities */
+.glass-panel {
+  background: rgba(20, 15, 10, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(235, 220, 196, 0.12);
+}
+
+.glass-panel-gold {
+  background: rgba(25, 18, 12, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(229, 190, 88, 0.25);
+  box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.5), 0 0 20px rgba(229, 190, 88, 0.08);
+}
+
+.text-gold-gradient {
+  background: linear-gradient(135deg, #f7d988 0%, #e5be58 50%, #c88a2e 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-terracotta-gradient {
+  background: linear-gradient(135deg, #f08259 0%, #c85a32 50%, #9e3624 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.glow-gold {
+  box-shadow: 0 0 30px rgba(229, 190, 88, 0.2);
+}
+
+.glow-gold-lg {
+  box-shadow: 0 0 60px rgba(229, 190, 88, 0.3);
+}
+
+.glow-card {
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.glow-card:hover {
+  border-color: rgba(229, 190, 88, 0.4);
+  box-shadow: 0 12px 36px -8px rgba(0, 0, 0, 0.8), 0 0 30px rgba(229, 190, 88, 0.15);
+  transform: translateY(-4px);
 }
 
 .prose-africa p {
   max-width: 68ch;
-  font-family: var(--font-display);
-  font-size: 1.1875rem;
-  line-height: 1.8;
-  color: #2b221a;
+  font-family: var(--font-sans);
+  font-size: 1.2rem;
+  line-height: 1.85;
+  color: #ebdcc4;
 }
 
+/* Sound wave animation */
 @keyframes eq {
-  0%, 100% { transform: scaleY(0.25); }
+  0%, 100% { transform: scaleY(0.2); }
   50% { transform: scaleY(1); }
 }
 
 .eq-bar {
   display: inline-block;
-  width: 3px;
-  height: 16px;
+  width: 3.5px;
+  height: 18px;
+  border-radius: 2px;
   background: currentColor;
   transform-origin: bottom;
-  animation: eq 0.9s ease-in-out infinite;
+  animation: eq 0.85s ease-in-out infinite;
+}
+
+/* Ambient Floating Animation */
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(1deg); }
+}
+
+.animate-float {
+  animation: floatSlow 6s ease-in-out infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -76,3 +157,4 @@ body {
     scroll-behavior: auto !important;
   }
 }
+

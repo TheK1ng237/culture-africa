@@ -1,9 +1,33 @@
 import type { Metadata, Viewport } from "next";
+import localFont from "next/font/local";
 import "./globals.css";
 import { Providers } from "@/components/ui/Providers";
 import { Navbar } from "@/components/navbar/Navbar";
 import { Footer } from "@/components/ui/Footer";
 import { SITE_DESCRIPTION, SITE_NAME, SITE_TAGLINE, SITE_URL } from "@/lib/constants";
+
+const burowaiFont = localFont({
+  src: "../public/fonts/burowai-font/BurowaiRegular-3zVjX.ttf",
+  variable: "--font-burowai",
+  display: "swap",
+});
+
+const skranjiFont = localFont({
+  src: [
+    {
+      path: "../public/fonts/skranji/Skranji-Regular.ttf",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/skranji/Skranji-Bold.ttf",
+      weight: "700",
+      style: "normal",
+    },
+  ],
+  variable: "--font-skranji",
+  display: "swap",
+});
 
 const title = `${SITE_NAME} — ${SITE_TAGLINE}`;
 
@@ -31,7 +55,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="fr">
+    <html lang="fr" className={`${burowaiFont.variable} ${skranjiFont.variable}`}>
       <body>
         <Providers>
           <Navbar />
@@ -42,3 +66,4 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     </html>
   );
 }
+
